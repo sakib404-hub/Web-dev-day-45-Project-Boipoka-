@@ -7,6 +7,7 @@ import { router } from './Router/Routes.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <RouterProvider router={router}
+      fallbackElement={<div className="loader">Please wait...</div>}></RouterProvider>
   </StrictMode>,
 )

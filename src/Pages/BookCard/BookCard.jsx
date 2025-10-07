@@ -1,9 +1,35 @@
+import { Star } from 'lucide-react';
 import React from 'react';
 
-const BookCard = () => {
+const BookCard = ({ book }) => {
+    const { bookName, author, image, review, category, rating } = book;
+    console.log(book);
     return (
-        <div>
-
+        <div className="card bg-base-200 w-96 shadow-md rounded-2xl">
+            <div className='h-75 flex items-center justify-center p-4 bg-[#f0f8ff] py-6 rounded-2xl'>
+                <img
+                    src={image}
+                    alt="Shoes"
+                    className='h-full w-4/6 object-center' />
+            </div >
+            <div className="card-actions px-4 mt-4">
+                <div className="badge bg-gray-200 text-green-600 font-semibold">Fashion</div>
+                <div className="badge bg-gray-200 text-green-600 font-semibold">Products</div>
+            </div>
+            <div className="card-body">
+                <h2 className="card-title">
+                    {bookName}
+                </h2>
+                <p className='font-semibold'>By : {author}</p>
+                <p>{review}</p>
+                <div className='flex border-t border-dotted p-2'>
+                    <p className='font-semibold'>{category}</p>
+                    <div className='flex items-center justify-center gap-2'>
+                        <p>{rating}</p>
+                        <Star></Star>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
