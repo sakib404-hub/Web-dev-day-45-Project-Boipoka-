@@ -1,20 +1,33 @@
 import { Star } from 'lucide-react';
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 const BookCard = ({ book }) => {
-    const { bookName, author, image, review, category, rating } = book;
-    console.log(book);
+    const { bookName, author, image, review, category, rating, tags, bookId } = book;
+    // console.log(book);
+
+    const path = useNavigate();
+    const handleCardClick = () => {
+        path(`bookDetails/${bookId}`)
+    }
+
     return (
-        <div className="card bg-base-200 w-96 shadow-md rounded-2xl">
-            <div className='h-75 flex items-center justify-center p-4 bg-[#f0f8ff] py-6 rounded-2xl'>
+        <div
+            onClick={handleCardClick}
+            className="card bg-base-200 w-96 shadow-md rounded-2xl">
+            <div className='h-60 flex items-center justify-center p-4 bg-[#f0f8ff] py-6 rounded-2xl'>
                 <img
                     src={image}
                     alt="Shoes"
-                    className='h-full w-4/6 object-center' />
+                    className='h-full w-3/7 object-center' />
             </div >
             <div className="card-actions px-4 mt-4">
-                <div className="badge bg-gray-200 text-green-600 font-semibold">Fashion</div>
-                <div className="badge bg-gray-200 text-green-600 font-semibold">Products</div>
+                {
+                    tags.map((tag, index) => {
+                        return <div
+                            key={index} className="badge bg-gray-200 text-green-600 font-semibold">{tag}</div>
+                    })
+                }
             </div>
             <div className="card-body">
                 <h2 className="card-title">

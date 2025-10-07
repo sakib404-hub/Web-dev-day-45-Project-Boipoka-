@@ -1,10 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 const Header = () => {
     // creating the links 
     const links = <div className='flex flex-col lg:flex-row gap-6 p-2'>
-        <li>Home</li>
-        <li>About</li>
+        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/about'>About</NavLink>
     </div>
     return (
         <div className="navbar bg-base-100 shadow-sm px-4">
