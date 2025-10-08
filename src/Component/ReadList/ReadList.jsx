@@ -27,29 +27,40 @@ const ReadList = () => {
     }, [bookData])
 
     return (
-        < div className="tabs tabs-lift" >
-            <input type="radio" name="my_tabs_3" className="tab" aria-label="ReadList" />
-            <div className="tab-content bg-base-100 border-base-300 p-6 space-y-6">
-                {
-                    readList.map((book) => {
-                        return <BookCardw
-                            key={book.bookId}
-                            book={book}></BookCardw>
-                    })
-                }
+        <div>
+            <div className='flex items-center justify-center'>
+                <div className="dropdown">
+                    <div tabIndex={0} role="button" className="btn m-1">SortBy</div>
+                    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                        <li><a>Pages</a></li>
+                        <li><a>Rating</a></li>
+                    </ul>
+                </div>
             </div>
+            < div className="tabs tabs-lift" >
+                <input type="radio" name="my_tabs_3" className="tab" aria-label="ReadList" />
+                <div className="tab-content bg-base-100 border-base-300 p-6 space-y-6">
+                    {
+                        readList.map((book) => {
+                            return <BookCardw
+                                key={book.bookId}
+                                book={book}></BookCardw>
+                        })
+                    }
+                </div>
 
-            <input type="radio" name="my_tabs_3" className="tab" aria-label="WishList" defaultChecked />
-            <div className="tab-content bg-base-100 border-base-300 p-6 space-y-6">
-                {
-                    wishList.map((book) => {
-                        return <BookCardw
-                            key={book.bookId}
-                            book={book}></BookCardw>
-                    })
-                }
-            </div>
-        </div >
+                <input type="radio" name="my_tabs_3" className="tab" aria-label="WishList" defaultChecked />
+                <div className="tab-content bg-base-100 border-base-300 p-6 space-y-6">
+                    {
+                        wishList.map((book) => {
+                            return <BookCardw
+                                key={book.bookId}
+                                book={book}></BookCardw>
+                        })
+                    }
+                </div>
+            </div >
+        </div>
     );
 };
 
