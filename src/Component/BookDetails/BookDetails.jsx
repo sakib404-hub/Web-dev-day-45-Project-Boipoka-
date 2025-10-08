@@ -1,12 +1,34 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import { Star } from 'lucide-react';
+import { addToLocalStorage, addToWishListLocalStorage } from '../../utilities/AddtoLocal'
 
 const BookDetails = () => {
     const book = useLoaderData();
     const { bookName, author, image, review, category, rating, tags, totalPages,
-        yearOfPublishing, publisher
+        yearOfPublishing, publisher, bookId
     } = book;
+
+    const path = useNavigate();
+    const handleButtonOnclick = () => {
+        path('/');
+    }
+
+    const handleMarkAsRead = (id) => {
+        // console.log('Book id is  : ', id);
+        // Storing with id 
+        //where to store --> we will store the data in the local storage
+        // collection of set means we will set an array of object
+        //if book already exist therefore showing a alert 
+        //if the book does not exist therefore pushing it in the array
+        addToLocalStorage(id);
+    }
+
+
+    const addToWishList = (id) => {
+        // console.log(typeof id);
+        addToWishListLocalStorage(id);
+    }
 
     return (
         <div className="card card-side bg-base-100 shadow-sm p-4
@@ -70,8 +92,14 @@ const BookDetails = () => {
                     </p>
                 </div>
                 <div className='space-x-4'>
-                    <button className='btn'>Read</button>
-                    <button className='btn btn-primary'>Wishlist</button>
+                    <button className='btn'
+                        onClick={() => { handleMarkAsRead(bookId) }}>Mark As Read</button>
+                    <button className='btn btn-primary'
+                        onClick={() => addToWishList(bookId)}>Add to Wishlist</button>
+                </div>
+                <div>
+                    <button className="btn btn-soft btn-success px-4"
+                        onClick={handleButtonOnclick}>Back</button>
                 </div>
             </div>
         </div>

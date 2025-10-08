@@ -6,6 +6,7 @@ const Header = () => {
     const links = <div className='flex flex-col lg:flex-row gap-6 p-2'>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/about'>About</NavLink>
+        <NavLink to='/readlist'>ReadList</NavLink>
     </div>
     return (
         <div className="navbar bg-base-100 shadow-sm px-4">
