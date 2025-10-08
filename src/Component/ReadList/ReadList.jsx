@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { getStoredBookFromLocalStorage, getWishListFromLocalStorage } from '../../utilities/AddtoLocal';
-import BookCard from '../../Pages/BookCard/BookCard';
 import BookCardw from '../BookCardw/BookCardw';
 
 const ReadList = () => {

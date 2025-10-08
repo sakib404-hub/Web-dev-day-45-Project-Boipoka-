@@ -2,6 +2,10 @@ import React from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
 import { Star } from 'lucide-react';
 import { addToLocalStorage, addToWishListLocalStorage } from '../../utilities/AddtoLocal'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 const BookDetails = () => {
     const book = useLoaderData();
@@ -21,7 +25,9 @@ const BookDetails = () => {
         // collection of set means we will set an array of object
         //if book already exist therefore showing a alert 
         //if the book does not exist therefore pushing it in the array
+
         addToLocalStorage(id);
+
     }
 
 
